@@ -1,0 +1,33 @@
+.person-post{
+  border: 1px solid pink;
+  width: 65vw;
+  margin-top: 10px;
+}
+.post-container{
+  display: flex;
+  flex-direction: column;
+  width: 75vw;
+  min-height: 80vh;
+  overflow-x: scroll;
+  padding-top:250px;
+  padding-bottom: 20px;
+}
+.post-big-container{
+  width: 75vw;
+  border: 1px solid black;
+  overflow-x: scroll;
+  max-height: 80vh;
+}
+.post-date{
+  text-align: right;
+  margin-right: 10px;
+}
+.post-name{
+  font-weight: bold;
+  margin-left: 25px;
+}
+
+.post-words{
+margin-left: 15px;
+}
+
