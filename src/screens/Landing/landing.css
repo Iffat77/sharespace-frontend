@@ -1,0 +1,18 @@
+.sign-up-form{
+  display: flex;
+  flex-direction: column;  
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
+  height: 250px;
+  width: 300px;
+  border: 1px black solid;
+}
+
+.sign-up-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  /* if we want the box to display in the center make a height */
+}
