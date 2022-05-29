@@ -51,17 +51,19 @@ export default function Feed() {
   }, [setPost])
   
   return (
-    <div className='post-container'>
-      {Post.map((post) => {
-        return (
-          <div className='person-post'>
-            <p className='post-name'>{post.name}</p>
-            <p className='post-words'>{post.words}</p>
-            <p className='post-date'>{post.date}</p>
-          </div>
-        )
-      })
-      }
+    <div className='post-big-container'>
+      <div className='post-container'>
+        {Post.map((post) => {
+          return (
+            <div className='person-post'>
+              <p className='post-name'>{post.name}</p>
+              <p className='post-words'>{post.words}</p>
+              <p className='post-date'>{post.date}</p>
+            </div>
+          )
+        })
+        }
+      </div>
     </div>
   )
 }

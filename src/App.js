@@ -14,17 +14,17 @@ import SignIn from './screens/SignIn/SignIn';
 function App() {
   return (
     <div className="App">
-      <Navbar />
+      {/* <Navbar /> */}
       {/* <Profile /> */}
-      {/* <Feed /> */}
+      <Feed />
       {/* <Post /> */}
       {/* <Userbox /> */}
-      <Routes>
+      {/* <Routes>
         <Route path='/' element={<Landing />}/>
         <Route path='/signin' element={<SignIn />}/>
         <Route path='/activeusers' element={<People />}/>
         <Route path='/profile' element={<Profile />}/>
-      </Routes>
+      </Routes> */}
     </div>
   );
 }
