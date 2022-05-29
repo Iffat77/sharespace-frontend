@@ -7,19 +7,24 @@ import Navbar from './components/Navbar/Navbar';
 import Profile from './screens/Profile/Profile';
 import Feed from './components/Feed/Feed';
 import Post from './components/Post/Post';
+import Userbox from './components/Userbox/Userbox';
+import SignIn from './screens/SignIn/SignIn';
+
 
 function App() {
   return (
     <div className="App">
-      {/* <Navbar /> */}
+      <Navbar />
       {/* <Profile /> */}
       {/* <Feed /> */}
-      <Post />
-      {/* <Routes>
+      {/* <Post /> */}
+      {/* <Userbox /> */}
+      <Routes>
         <Route path='/' element={<Landing />}/>
+        <Route path='/signin' element={<SignIn />}/>
         <Route path='/activeusers' element={<People />}/>
         <Route path='/profile' element={<Profile />}/>
-      </Routes> */}
+      </Routes>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import './landing.css'
 
 export default function Landing() {
@@ -57,6 +58,7 @@ export default function Landing() {
         <button
           type='submit'
         >Sign Up</button>
+        <Link to='/signin' className='signin-link'>Already a memeber? Sign in here</Link>
       </form>
     </div>
   )

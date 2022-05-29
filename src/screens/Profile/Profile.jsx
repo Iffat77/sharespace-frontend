@@ -8,9 +8,9 @@ export default function Profile() {
   
   return (
     <div className='pofile-container'>
-      {/* <Userbox /> */}
-      {/* <Post /> */}
-      {/* <Feed /> */}
+      <Userbox className='userbox-comp' />
+      <Post className='post-comp' />
+      <Feed className='feed-comp' />
     </div>
   )
 }

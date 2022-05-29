@@ -10,14 +10,14 @@ export default function Post() {
 
   return (
     <div className='post-container'>
-      <form type='submit' onSubmit={handleSubmit}>
-        <input
+      <form type='submit' onSubmit={handleSubmit} className='thoughts-container'>
+        <textarea
           type='text'
           placeholder='Share your thoughts'
           onChange={handleChange}
           className='share-txt'
-        ></input>
-        <button>Share!</button>
+        ></textarea>
+        <button className='share-btn'>Share!</button>
       </form>
     </div>
   )
