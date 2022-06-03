@@ -1,32 +1,85 @@
-import { Route, Routes } from 'react-router-dom';
-import './App.css';
-
-import Landing from './screens/Landing/Landing';
-import People from './screens/People/People';
-import Navbar from './components/Navbar/Navbar';
-import Profile from './screens/Profile/Profile';
-import Feed from './components/Feed/Feed';
-import Post from './components/Post/Post';
-import Userbox from './components/Userbox/Userbox';
-import SignIn from './screens/SignIn/SignIn';
-
+import "./App.css";
+import Landing from "./screens/Landing.jsx";
+import Profile from "./screens/Profile.jsx";
+import SignIn from "./screens/SignIn.jsx";
+import { Routes, Route, Navigate } from "react-router-dom";
+import Layout from "./HOC/Layout";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [user, setUser] = useState(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [posts, setPosts] = useState([]);
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    fetch("http://localhost:8000/post/")
+      .then(res => res.json())
+      .then(data => {
+        setPosts(data);
+      });
+  }, [user, toggle]);
+  console.log(isAuthenticated)
+  console.log(user)
+
   return (
-    <div className="App">
-      <Navbar />
-      {/* <Profile /> */}
-      {/* <Feed /> */}
-      {/* <Post /> */}
-      {/* <Userbox /> */}
+    <div>
+      <Layout
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+        setUser={setUser}
+      >
       <Routes>
-        <Route path='/' element={<Landing />}/>
-        <Route path='/signin' element={<SignIn />}/>
-        <Route path='/activeusers' element={<People />}/>
-        <Route path='/profile' element={<Profile />}/>
+        <Route path='/' element={<Landing  isAuthenticated={isAuthenticated} />}/>
+        <Route path='/signin' element={<SignIn isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>}/>
+        <Route path='/profile' element={<Profile user={user} setUser={setUser} />}/>
       </Routes>
+      </Layout>
     </div>
+    
+  //  <div className="app">
+  //   <Routes>
+  //   <Route path='/' element={<Landing />} />
+  //   </Routes>
+    
+  // </div> 
+  
+
+
   );
 }
 
 export default App;
+
+{/* <Routes>
+<Route
+    path="/"
+    element={<Landing isAuthenticated={isAuthenticated} />}
+  />
+<Route
+    path="/profile"
+    element={
+      isAuthenticated ? (
+        <Profile
+          setToggle={setToggle}
+          posts={posts}
+          user={user}
+          setUser={setUser}
+        />
+      ) : (
+        <Navigate to="/" />
+      )
+    }
+  />
+  <Route
+    path="/signin"
+    element={
+      <SignIn
+        isAuthenticated={isAuthenticated}
+        setIsAuthenticated={setIsAuthenticated}
+        setUser={setUser}
+      />
+    }
+  />
+
+</Routes> */}
