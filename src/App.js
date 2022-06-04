@@ -13,14 +13,15 @@ function App() {
   const [toggle, setToggle] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:8000/post/")
+    fetch("http://localhost:8000/posts/")
       .then(res => res.json())
       .then(data => {
         setPosts(data);
       });
   }, [user, toggle]);
-  console.log(isAuthenticated)
-  console.log(user)
+  // console.log(isAuthenticated)
+  // console.log(user)
+  // console.log(posts)
 
   return (
     <div>
@@ -31,19 +32,12 @@ function App() {
       >
       <Routes>
         <Route path='/' element={<Landing  isAuthenticated={isAuthenticated} />}/>
-        <Route path='/signin' element={<SignIn isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser}/>}/>
-        <Route path='/profile' element={<Profile user={user} setUser={setUser} />}/>
+        <Route path='/signin' element={<SignIn isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} setToggle={setToggle}/>}/>
+        <Route path='/profile' element={ isAuthenticated ? (<Profile user={user} setUser={setUser} posts={posts} setPosts={setPosts} />) : (<Navigate to="/" />)}/>
       </Routes>
       </Layout>
     </div>
     
-  //  <div className="app">
-  //   <Routes>
-  //   <Route path='/' element={<Landing />} />
-  //   </Routes>
-    
-  // </div> 
-  
 
 
   );
@@ -51,35 +45,3 @@ function App() {
 
 export default App;
 
-{/* <Routes>
-<Route
-    path="/"
-    element={<Landing isAuthenticated={isAuthenticated} />}
-  />
-<Route
-    path="/profile"
-    element={
-      isAuthenticated ? (
-        <Profile
-          setToggle={setToggle}
-          posts={posts}
-          user={user}
-          setUser={setUser}
-        />
-      ) : (
-        <Navigate to="/" />
-      )
-    }
-  />
-  <Route
-    path="/signin"
-    element={
-      <SignIn
-        isAuthenticated={isAuthenticated}
-        setIsAuthenticated={setIsAuthenticated}
-        setUser={setUser}
-      />
-    }
-  />
-
-</Routes> */}

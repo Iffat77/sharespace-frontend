@@ -29,13 +29,12 @@ export const getSinglePost = async(id) => {
 export const postPost = function (post) {
 try {
   const postPost = {
-    team: post.name,
     post: post.post,
     publish_date: post.publish_date,
  
   };
   const data = await api.post("/endpoint", postPost);
-  console.log(postPost.team); //this is for testing
+  // console.log(postPost.team); //this is for testing
   return data
 }
 catch(error){ 

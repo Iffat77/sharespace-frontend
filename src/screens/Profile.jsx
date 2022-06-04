@@ -1,12 +1,13 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import ProfileComp from "../components/ProfileComp";
+import AddPost from "../components/AddPost";
+import PostComp from "../components/PostComp";
 
 function Profile({ user, posts, setToggle, setUser }) {
 
-  // const [userPosts, setUserPosts] = useState([]);
-  // const [posts, setPosts] = useState(null);
-  
+  const [userPosts, setUserPosts] = useState([]);
+  const [post, setPost] = useState(null);
 
   const [profile, setProfile] = useState({
     first_name: "",
@@ -22,17 +23,38 @@ function Profile({ user, posts, setToggle, setUser }) {
     }
   }, [user]);
 
-  // console.log(user)
   // useEffect(() => {
   //   let userPostsData =
   //     posts &&
   //     user &&
-  //     posts.filter(posts => {
-  //       return posts.profile_id === user.profile.id;
+  //     posts.filter(post => {
+  //       return post.profile === user.profile.user_id;
   //     });
   //   setUserPosts(userPostsData);
   // }, [posts]);
+  
+  // console.log(user.profile.user_id)
+  
+  // console.log(posts[8].profile)
+  // post.profile === user.profile.user_id
 
+  useEffect(() => {
+    let newArr = []
+    let userPostsData =
+      posts &&
+      user &&
+      posts.forEach(post => {
+        if (post.profile === user.profile.user_id) {
+       newArr.push(post.post)
+        }});
+      setUserPosts(newArr);
+    }, [posts]);
+    
+    console.log(userPosts)
+
+
+
+  
   return (
     <div className="profile-screen-container">
       <div className="profilecomp">
@@ -42,6 +64,15 @@ function Profile({ user, posts, setToggle, setUser }) {
             profile={profile}
             username={user?.username}
           />
+          <AddPost
+            setToggle={setToggle}
+          />
+          <PostComp
+            posts={userPosts}
+            setPost={setPost}
+            user={user}
+          />
+
         </div>
   </div>
     </div>
