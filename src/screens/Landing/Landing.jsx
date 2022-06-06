@@ -2,6 +2,7 @@ import React from 'react'
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './landing.css'
+import Cookies from 'js-cookie';
 
 export default function Landing() {
   const [formData, setFormData] = useState({
@@ -9,10 +10,33 @@ export default function Landing() {
     password: "",
     re_password: "",
   });
-  
+
+  const [accountCreated, setAccountCreated] = useState(false);
+
   const handleSubmit = (e) => {
-    e.preventDefault()
-  }
+    e.preventDefault();
+
+    const { password, re_password } = formData;
+
+    if (password === re_password) {
+      let options = {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json",
+          "X-CSRFToken": Cookies.get("csrftoken"),
+        },
+        credentials: "include",
+        body: JSON.stringify(formData),
+      };
+
+      fetch("http://localhost:8000/register", options).then(
+        response => {
+          setAccountCreated(true);
+        }
+      );
+    }
+  };
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,7 +45,9 @@ export default function Landing() {
       [name]: value, 
     })
   }
-  
+  if (accountCreated) {
+    alert("account created")
+  }
   
   return (
     <div className='sign-up-container'>
@@ -33,14 +59,14 @@ export default function Landing() {
           onChange={handleChange}
           value={formData.username}
         ></input>
-        <input
+        {/* <input
           placeholder='email'
           type='email'
           // name='email'
           // onChange={handleChange}
           // value={formData.username}
           // This will be commented in if we decide to store data
-        ></input>
+        ></input> */}
         <input
           placeholder='password'
           type='password'

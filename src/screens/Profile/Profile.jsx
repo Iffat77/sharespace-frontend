@@ -3,7 +3,7 @@ import React from 'react'
 import Userbox from '../../components/Userbox/Userbox'
 import Feed from '../../components/Feed/Feed'
 import Post from '../../components/Post/Post'
-export default function Profile() {
+export default function Profile({setToggle, posts, user, setUser}) {
   
   
   return (

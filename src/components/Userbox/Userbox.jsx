@@ -2,7 +2,12 @@ import React, { useEffect, useState } from 'react'
 import './userbox.css'
 
 export default function Userbox() {
-  const [User, setUser] = useState([])
+  const [user, setUser] = useState([])
+  const [profile, setProfile] = useState({
+    bio: "",
+    github: "",
+    image: "",
+  });
 
   let dummyData = [{
     name: "Stacey",
@@ -18,9 +23,25 @@ export default function Userbox() {
     setUser(dummyData)
   }, [setUser])
   
+
+  useEffect(() => {
+    if (user) {
+      setProfile({
+        name: user.profile.first_name,
+        image: user.profile.image,
+        birthay: user.profile.birthday,
+        location: user.profile.location,
+        bio: user.profile.bio,
+        profession: user.profile.profession,
+        link: user.profile.socialmedia
+      });
+    }
+  }, [user]);
+
+
   return (
     <div className='user-container'>
-      {User.map((user) => {
+      {user.map((user) => {
         return (
           <div className='user-info-container'>
             <img src={user.image} className='user-box-img'/>
@@ -32,7 +53,6 @@ export default function Userbox() {
             <a href={user.link} target="_blank">{user.link}</a>
           </div>
       )})
-
       }
     </div>
   )

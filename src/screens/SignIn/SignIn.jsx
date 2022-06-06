@@ -1,6 +1,8 @@
-import {useState} from 'react'
+import { useState } from 'react'
+import CSRFToken from '../../components/CSRFToken';
+import Cookies from "js-cookie";
 
-export default function SignIn() {
+export default function SignIn({setIsAuthenticated, setUser}) {
 
   const [formData, setFormData] = useState({
     username: "",
@@ -9,6 +11,43 @@ export default function SignIn() {
   
   const handleSubmit = (e) => {
     e.preventDefault()
+
+
+    let options = {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "X-CSRFToken": Cookies.get("csrftoken"),
+      },
+      credentials: "include",
+      body: JSON.stringify(formData),
+    };
+
+    let userOptions = {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+    };
+
+    fetch("http://localhost:8000/api_auth/login/", options)
+      .then(response => {
+        return response.json();
+      })
+      .then(data => {
+        fetch("http://localhost:8000/profile/user", userOptions)
+          .then(response => {
+            return response.json();
+          })
+          .then(data => {
+            setIsAuthenticated(true);
+            setUser(data);
+          });
+      })
+
   }
 
   const handleChange = (e) => {
@@ -22,20 +61,13 @@ export default function SignIn() {
   return (
     <div className='sign-up-container'>
     <form type='submit' onSubmit={handleSubmit} className='sign-up-form'>
-      {/* <input
-        placeholder='full name'
+      <CSRFToken />
+      <input
+        placeholder='username'
         type='text'
         name='username'
         onChange={handleChange}
         value={formData.username}
-      ></input> */}
-      <input
-        placeholder='email'
-        type='email'
-        // name='email'
-        // onChange={handleChange}
-        // value={formData.username}
-        // This will be commented in if we decide to store data
       ></input>
       <input
         placeholder='password'
