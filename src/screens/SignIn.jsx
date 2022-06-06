@@ -90,7 +90,7 @@ export default function Login({ isAuthenticated, setIsAuthenticated, setUser}) {
           placeholder="Password"
           required
         ></input>
-        <button className="signinButton">Sign in</button>
+        <button className="signinButton">Sign in Testing</button>
       </form>
     </div>
   );
