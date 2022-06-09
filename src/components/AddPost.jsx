@@ -3,11 +3,12 @@ import { useState } from "react";
 import CSRFToken from "./CSRFToken";
 import Cookies from "js-cookie";
 
-export default function AddPost({ setToggle }) {
+export default function AddPost({ setToggle, user }) {
   
   const [newPost, setNewPost] = useState({
     post: "",
-    publish_date: "",
+    // publish_date: "",
+    profile: ""
   });
 
   const handleChange = (event) => {
@@ -16,6 +17,7 @@ export default function AddPost({ setToggle }) {
       ...newPost,
       [name]: value,
     });
+    console.log(newPost)
   };
 
   const handleSubmit = (event) => {
@@ -30,10 +32,11 @@ export default function AddPost({ setToggle }) {
       credentials: "include",
       body: JSON.stringify(newPost)
     };
-
+    
     console.log(newPost)
+    console.log(user.profile.user_id)
 
-    fetch("http://localhost:8000/posts/post/", options).then(response => {
+    fetch("http://localhost:8000/posts/", options).then(response => {
       console.log(response)
       return response.json();
     }).then(data => {
@@ -46,16 +49,18 @@ export default function AddPost({ setToggle }) {
 
   return (
     <div className='post-container'>
-      <form type='submit' onSubmit={handleSubmit} className='thoughts-container'>
+      <form type='submit' name='poop' onSubmit={handleSubmit} className='thoughts-container'>
       <CSRFToken />
         <textarea
           placeholder='Share your thoughts'
           name="post"
           type='text'
-          value={newPost.post}
+          // value={newPost.post}
           onChange={handleChange}
           className='share-txt'
         ></textarea>
+        {/* <input type='hidden' name='profile' value={user ? user.profile.id : null} >{user.user_id}</input> */}
+        <input type='text' name='profile' value={newPost.profile} onChange={handleChange}></input>
         <button className='share-btn'>Share!</button>
       </form>
     </div>

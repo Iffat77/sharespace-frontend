@@ -66,6 +66,7 @@ function Profile({ user, posts, setToggle, setUser }) {
           />
           <AddPost
             setToggle={setToggle}
+            user={user}
           />
           <PostComp
             posts={userPosts}
