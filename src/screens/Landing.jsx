@@ -63,6 +63,14 @@ export default function Landing({ isAuthenticated }) {
           value={formData.username}
           required
         ></input>
+                <input
+          placeholder="Firstname"
+          type="text"
+          name="first_name"
+          onChange={handleChange}
+          value={formData.first_name}
+          required
+        ></input>
         <input
           placeholder="email"
           type="email"

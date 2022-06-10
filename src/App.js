@@ -2,6 +2,7 @@ import "./App.css";
 import Landing from "./screens/Landing.jsx";
 import Profile from "./screens/Profile.jsx";
 import SignIn from "./screens/SignIn.jsx";
+import Feed from "./screens/Feed.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./HOC/Layout";
 import { useState, useEffect } from "react";
@@ -34,7 +35,8 @@ function App() {
         <Route path='/' element={<Landing  isAuthenticated={isAuthenticated} />}/>
         <Route path='/signin' element={<SignIn isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} setToggle={setToggle}/>}/>
         <Route path='/profile' element={ isAuthenticated ? (<Profile user={user} setUser={setUser} posts={posts} setPosts={setPosts} />) : (<Navigate to="/" />)}/>
-      </Routes>
+        <Route path='/feed' element={<Feed isAuthenticated={isAuthenticated} setIsAuthenticated={setIsAuthenticated} setUser={setUser} user={user} posts={posts} /> } />
+        </Routes>
       </Layout>
     </div>
     

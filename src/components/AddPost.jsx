@@ -3,11 +3,11 @@ import { useState } from "react";
 import CSRFToken from "./CSRFToken";
 import Cookies from "js-cookie";
 
-export default function AddPost({ setToggle }) {
+export default function AddPost({ setToggle, user }) {
   
   const [newPost, setNewPost] = useState({
     post: "",
-    publish_date: "",
+    profile: user ? user.profile.user_id : null 
   });
 
   const handleChange = (event) => {
@@ -30,14 +30,10 @@ export default function AddPost({ setToggle }) {
       credentials: "include",
       body: JSON.stringify(newPost)
     };
-
-    console.log(newPost)
-
-    fetch("http://localhost:8000/posts/post/", options).then(response => {
-      console.log(response)
+    
+    fetch("http://localhost:8000/posts/", options).then(response => {
       return response.json();
     }).then(data => {
-      console.log(data)
       // setToggle(prev => !prev)
     });
 };
@@ -52,7 +48,6 @@ export default function AddPost({ setToggle }) {
           placeholder='Share your thoughts'
           name="post"
           type='text'
-          value={newPost.post}
           onChange={handleChange}
           className='share-txt'
         ></textarea>

@@ -23,20 +23,6 @@ function Profile({ user, posts, setToggle, setUser }) {
     }
   }, [user]);
 
-  // useEffect(() => {
-  //   let userPostsData =
-  //     posts &&
-  //     user &&
-  //     posts.filter(post => {
-  //       return post.profile === user.profile.user_id;
-  //     });
-  //   setUserPosts(userPostsData);
-  // }, [posts]);
-  
-  // console.log(user.profile.user_id)
-  
-  // console.log(posts[8].profile)
-  // post.profile === user.profile.user_id
 
   useEffect(() => {
     let newArr = []
@@ -48,11 +34,20 @@ function Profile({ user, posts, setToggle, setUser }) {
        newArr.push(post.post)
         }});
       setUserPosts(newArr);
-    }, [posts]);
-    
-    console.log(userPosts)
+  }, [posts]);
+  
+// console.log(post.profile)
+// console.log(user.profile.first_name)
 
-
+  // useEffect(() => {
+  //   let userPostsData =
+  //     posts &&
+  //     user &&
+  //     posts.filter(post => {
+  //       return post.profile === user.profile.user_id;
+  //     });
+  //   setUserPosts(userPostsData);
+  // }, [posts]);
 
   
   return (
@@ -66,6 +61,7 @@ function Profile({ user, posts, setToggle, setUser }) {
           />
           <AddPost
             setToggle={setToggle}
+            user={user}
           />
           <PostComp
             posts={userPosts}
