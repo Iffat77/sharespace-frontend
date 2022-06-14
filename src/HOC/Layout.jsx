@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect } from "react";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/NavBar/Navbar";
 import { checkAuthenticated } from "../services/auth";
 import { load_user } from "../services/profile";
 

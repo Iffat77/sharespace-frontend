@@ -1,8 +1,8 @@
 import "./App.css";
-import Landing from "./screens/Landing.jsx";
-import Profile from "./screens/Profile.jsx";
-import SignIn from "./screens/SignIn.jsx";
-import Feed from "./screens/Feed.jsx";
+import Landing from "./screens/Landing/Landing.jsx";
+import Profile from "./screens/Profile/Profile.jsx";
+import SignIn from "./screens/SignIn/SignIn.jsx";
+import Feed from "./screens/Feed/Feed.jsx";
 import { Routes, Route, Navigate } from "react-router-dom";
 import Layout from "./HOC/Layout";
 import { useState, useEffect } from "react";

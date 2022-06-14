@@ -1,8 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import ProfileComp from "../components/ProfileComp";
-import AddPost from "../components/AddPost";
-import PostComp from "../components/PostComp";
+import ProfileComp from "../../components/ProfileComp/ProfileComp";
+import AddPost from "../../components/AddPost/AddPost";
+import PostComp from "../../components/PostComp";
 
 function Profile({ user, posts, setToggle, setUser }) {
 
@@ -53,7 +53,6 @@ function Profile({ user, posts, setToggle, setUser }) {
   return (
     <div className="profile-screen-container">
       <div className="profilecomp">
-        <h1>Profile screen</h1>
         <div>
           <ProfileComp
             profile={profile}

@@ -1,0 +1,19 @@
+.people-container{
+  display: flex;
+  max-width: 100vw;
+  flex-wrap: wrap;
+  column-gap: 10px;
+  overflow-x: hidden;
+  margin-left: 10vw;
+  margin-right: 10vw;
+}
+.people-image{
+  width: 200px;
+  height: 150px;
+}
+
+.person-container{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

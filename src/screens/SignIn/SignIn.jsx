@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Navigate } from "react-router-dom";
-import CSRFToken from "../components/CSRFToken";
+import CSRFToken from "../../components/CSRFToken";
 import Cookies from "js-cookie";
-
+import '../Landing/landing.css';
 
 export default function Login({ isAuthenticated, setIsAuthenticated, setUser}) {
   const [formData, setFormData] = useState({
@@ -64,12 +64,12 @@ export default function Login({ isAuthenticated, setIsAuthenticated, setUser}) {
 
 
   return (
-    <div className="signinContainer">
-      <div className="text-container">
-        <h1 className="topText">Sign In</h1>
-      </div>
-      <form onSubmit={handleSubmit} className="signin-form">
+    <div className="sign-up-container">
+      <form onSubmit={handleSubmit} className="sign-up-form">
         <CSRFToken />
+        <div className="text-container">
+          <h1 className="topText">Sign In</h1>
+        </div>
         <input
           value={formData.username}
           onChange={handleChange}
