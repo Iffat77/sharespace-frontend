@@ -45,14 +45,16 @@ export default function AddPost({ setToggle, user }) {
     <div className='post-container'>
       <form type='submit' onSubmit={handleSubmit} className='thoughts-container'>
       <CSRFToken />
-        <textarea
+        <input
           placeholder='Share your thoughts'
           name="post"
           type='text'
           onChange={handleChange}
           className='share-txt'
-        ></textarea>
-        <button className='share-btn'>Share!</button>
+        >
+
+        </input>
+          <button className='share-btn'>Share!</button>
       </form>
     </div>
   )

@@ -2,7 +2,8 @@ import React from "react";
 import { useState, useEffect } from "react";
 import ProfileComp from "../../components/ProfileComp/ProfileComp";
 import AddPost from "../../components/AddPost/AddPost";
-import PostComp from "../../components/PostComp";
+import PostComp from "../../components/PostComp/PostComp";
+import './profile.css';
 
 function Profile({ user, posts, setToggle, setUser }) {
 
@@ -35,41 +36,28 @@ function Profile({ user, posts, setToggle, setUser }) {
         }});
       setUserPosts(newArr);
   }, [posts]);
-  
-// console.log(post.profile)
-// console.log(user.profile.first_name)
-
-  // useEffect(() => {
-  //   let userPostsData =
-  //     posts &&
-  //     user &&
-  //     posts.filter(post => {
-  //       return post.profile === user.profile.user_id;
-  //     });
-  //   setUserPosts(userPostsData);
-  // }, [posts]);
-
-  
+    
   return (
     <div className="profile-screen-container">
-      <div className="profilecomp">
-        <div>
+        <div className="prof-comp">
           <ProfileComp
             profile={profile}
             username={user?.username}
           />
+        </div>
+        <div className="add-post-comp">
           <AddPost
             setToggle={setToggle}
             user={user}
-          />
+        />
+        </div>
+        <div className="post-comp">
           <PostComp
             posts={userPosts}
             setPost={setPost}
             user={user}
-          />
-
+        />
         </div>
-  </div>
     </div>
   );
 }
