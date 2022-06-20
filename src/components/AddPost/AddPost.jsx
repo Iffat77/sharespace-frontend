@@ -37,6 +37,7 @@ export default function AddPost({ setToggle, user }) {
     }).then(data => {
       // setToggle(prev => !prev)
     });
+
 };
 
   

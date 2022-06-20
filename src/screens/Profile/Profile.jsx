@@ -25,17 +25,29 @@ function Profile({ user, posts, setToggle, setUser }) {
   }, [user]);
 
 
+  // useEffect(() => {
+  //   let newArr = []
+  //   let userPostsData =
+  //     posts &&
+  //     user &&
+  //     posts.forEach(post => {
+  //       if (post.profile === user.profile.user_id) {
+  //      newArr.push(post.post)
+  //       }});
+  //     setUserPosts(newArr);
+  // }, [posts]);
+
   useEffect(() => {
-    let newArr = []
     let userPostsData =
       posts &&
       user &&
-      posts.forEach(post => {
-        if (post.profile === user.profile.user_id) {
-       newArr.push(post.post)
-        }});
-      setUserPosts(newArr);
-  }, [posts]);
+      posts.filter(post => {
+        return post.profile === user.profile.user_id
+  })
+    setUserPosts(userPostsData)
+  }, [posts])
+
+
     
   return (
     <div className="profile-screen-container">

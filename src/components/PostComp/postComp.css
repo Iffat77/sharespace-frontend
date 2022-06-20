@@ -1,11 +1,11 @@
 .user-feed-holder{
   height: 100%;
-  width: 100%;
+  width: 90%;
   display: flex;
   justify-content: center;
-  align-items:flex-start;
-  /* margin-left: 8rem; */
-  /* border: 1px solid seagreen; */
+  align-items: center;
+  margin-left: 12rem;
+  border: 1px solid seagreen;
 
 }
 
