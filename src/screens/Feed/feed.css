@@ -1,0 +1,38 @@
+.feed-holder{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.feed-main-container{
+  width: 60vw;
+  overflow-x: scroll;
+  max-height: 80vh;
+  border: 1px solid black;
+}
+.feed-container{
+  display: flex;
+  flex-direction: column;
+  /* width: 75vw; */
+  min-height: 80vh;
+  overflow-x: scroll;
+  padding-top:250px;
+  padding-bottom: 20px;
+}
+.all-feed{
+  border: 1px solid pink;
+  width: 100%;
+  margin-top: 10px;
+}
+.post-date{
+  text-align: right;
+  margin-right: 10px;
+}
+.poster-name{
+  font-weight: bold;
+  margin-left: 25px;
+}
+.feed-text{
+margin-left: 15px;
+}

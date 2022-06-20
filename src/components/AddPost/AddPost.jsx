@@ -1,7 +1,8 @@
 import React from 'react'
 import { useState } from "react";
-import CSRFToken from "./CSRFToken";
+import CSRFToken from "../CSRFToken";
 import Cookies from "js-cookie";
+import './addPost.css';
 
 export default function AddPost({ setToggle, user }) {
   

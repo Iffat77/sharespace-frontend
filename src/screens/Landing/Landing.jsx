@@ -1,9 +1,10 @@
 import React from "react";
-import CSRFToken from "../components/CSRFToken";
+import CSRFToken from "../../components/CSRFToken";
 import { useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 // import { register } from "../services/auth";
 import Cookies from "js-cookie";
+import './landing.css'
 
 export default function Landing({ isAuthenticated }) {
   const [formData, setFormData] = useState({
@@ -49,11 +50,10 @@ export default function Landing({ isAuthenticated }) {
   } else if (accountCreated) {
     return <Navigate to="/signin" replace />;
   }
-
+  
   return (
-    <div>
-      <h1>ShareSpace</h1>
-      <form onSubmit={handleSubmit} className="landing-form">
+    <div className="sign-up-container">
+      <form onSubmit={handleSubmit} className="sign-up-form">
         <CSRFToken />
         <input
           placeholder="User Name"
