@@ -25,27 +25,27 @@ function Profile({ user, posts, setToggle, setUser }) {
   }, [user]);
 
 
-  // useEffect(() => {
-  //   let newArr = []
-  //   let userPostsData =
-  //     posts &&
-  //     user &&
-  //     posts.forEach(post => {
-  //       if (post.profile === user.profile.user_id) {
-  //      newArr.push(post.post)
-  //       }});
-  //     setUserPosts(newArr);
-  // }, [posts]);
-
   useEffect(() => {
+    let newArr = []
     let userPostsData =
       posts &&
       user &&
-      posts.filter(post => {
-        return post.profile === user.profile.user_id
-  })
-    setUserPosts(userPostsData)
-  }, [posts])
+      posts.forEach(post => {
+        if (post.profile === user.profile.user_id) {
+       newArr.push(post.post)
+        }});
+      setUserPosts(newArr);
+  }, [posts]);
+
+  // useEffect(() => {
+  //   let userPostsData =
+  //     posts &&
+  //     user &&
+  //     posts.filter(post => {
+  //       return post.profile === user.profile.user_id
+  // })
+  //   setUserPosts(userPostsData)
+  // }, [posts])
 
 
     
